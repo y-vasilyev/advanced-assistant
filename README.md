@@ -19,6 +19,29 @@
 * Установить секрет `tg_token`, если вы планируете тестировать телеграм-бота
 * Открыть ноутбук [advanced-assistant.ipynb](advanced-assistant.ipynb)
 
+## Сохранение диалогов между запусками
+
+Для сохранения диалогов (threads) между запусками приложения используется Redis. Это позволяет сохранять контекст диалога даже при перезапуске сервера.
+
+### Запуск с Docker Compose
+
+Для запуска приложения с Redis:
+
+1. Убедитесь, что у вас установлены Docker и Docker Compose
+2. Запустите приложение с помощью команды:
+   ```
+   docker-compose up -d
+   ```
+
+Это запустит приложение и Redis в отдельных контейнерах. Redis будет сохранять данные в именованном томе `redis-data`, что обеспечит сохранность данных между перезапусками.
+
+### Настройка переменных окружения
+
+Для настройки подключения к Redis используются следующие переменные окружения:
+* `REDIS_HOST` - хост Redis (по умолчанию "redis" для Docker Compose или "localhost" для локального запуска)
+* `REDIS_PORT` - порт Redis (по умолчанию 6379)
+* `REDIS_PASSWORD` - пароль для подключения к Redis (если требуется)
+
 ## В выступлениях
 * 3 апреля 2025 г., Вебинар "[Создание Telegram-бота на базе LLM с RAG и Function Calling](https://yandex.cloud/ru/events/1117)" [![GitHub Release](https://img.shields.io/github/v/release/yandex-datasphere/advanced-assistant?filter=v1)](https://github.com/yandex-datasphere/advanced-assistant/tree/v1) ![](https://img.shields.io/badge/смотреть-запись-blue)
 
